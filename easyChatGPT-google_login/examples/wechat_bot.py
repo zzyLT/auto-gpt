@@ -16,7 +16,6 @@ OPENAI_PASSWORD = "daisyZZY0609"
 chat = ChatClient(OPENAI_EMAIL, OPENAI_PASSWORD, headless=False, chrome_version=112)
 
 
-demande = "请你用中文根据专业能力、学习能力、通用能力、创业能力、道德责任、信息能力、安全环保、沟通合作、这八大能力来总结以下文本, 若对应能力在文本中有所体现，则分条输出该职业技能大类及相对应的原文内容，输出形式请参考：“项目管理:\n原文1\n原文2”:\n"
 
 def interact_gpt(text):
     time.sleep(3)
@@ -62,15 +61,16 @@ if __name__ == '__main__':
     # funct(0, len(data))
 
 
-    data = pd.read_excel('./物流职业/职业名称汇总.xlsx')
+    data = pd.read_csv('./物流职业/extra_post.csv')
     labels = ['职业素养','通用能力','职业技能']
     for label in labels:
         data[label] = None
 
-    for name in list(data['name']):
+    for name in list(data['name'])[:100]:
         for label in labels:
-            demande = '十条'+ name +'最重要的'+ label+'并简要描述其内容'
-            data.loc[data['name'] == name, label] = interact_gpt(demande)
+            demande = '十条'+ name +'最重要的'+ label+'并描述其内容'
+            ans = interact_gpt(demande)
+            data.loc[data['name'] == name, label] = ans + interact_gpt('继续')
             time.sleep(5)
             print(data.loc[data['name'] == name, label])
-            data.to_csv('answer.csv')
+            data.to_csv('answer100.csv')

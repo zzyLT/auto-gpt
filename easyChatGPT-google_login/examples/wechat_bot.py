@@ -61,16 +61,18 @@ if __name__ == '__main__':
     # funct(0, len(data))
 
 
-    data = pd.read_csv('./物流职业/extra_post.csv')
+    # data = pd.read_csv('./物流职业/extra_post.csv')
+    data = pd.read_csv('answer100.csv')
     labels = ['职业素养','通用能力','职业技能']
-    for label in labels:
-        data[label] = None
+    # for label in labels:
+    #     data[label] = None
 
-    for name in list(data['name'])[:100]:
+    for name in list(data['name']):
         for label in labels:
-            demande = '十条'+ name +'最重要的'+ label+'并描述其内容'
-            ans = interact_gpt(demande)
-            data.loc[data['name'] == name, label] = ans + interact_gpt('继续')
-            time.sleep(5)
-            print(data.loc[data['name'] == name, label])
-            data.to_csv('answer100.csv')
+            if str(data.loc[data['name'] == name, label].values[0]) == 'nan':
+                demande = '十条'+ name +'最重要的'+ label+'并描述其内容'
+                ans = interact_gpt(demande)
+                data.loc[data['name'] == name, label] = ans + '\n' + interact_gpt('继续')
+                time.sleep(5)
+                print(data.loc[data['name'] == name, label])
+                data.to_csv('answer100.csv')

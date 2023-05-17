@@ -11,8 +11,10 @@ import multiprocessing
 # data = pd.read_excel(path)
 # print(data)
 
-OPENAI_EMAIL = "aaaamiaoaaa@gmail.com"
-OPENAI_PASSWORD = "daisyZZY0609"
+OPENAI_EMAIL = "zuzhuangyan@gmail.com"
+OPENAI_PASSWORD = "zuzhuangyan0609"
+# OPENAI_EMAIL = "aaaamiaoaaa@gmail.com"
+# OPENAI_PASSWORD = "daisyZZY0609"
 chat = ChatClient(OPENAI_EMAIL, OPENAI_PASSWORD, headless=False, chrome_version=112)
 
 

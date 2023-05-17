@@ -24,7 +24,8 @@ if __name__ == '__main__':
 
     # data = pd.read_csv('./物流职业/extra_post.csv')
     # data = pd.read_csv('answer100.csv')
-    data = pd.read_excel('gpt结果汇总1510.xlsx')
+    # data = pd.read_excel('gpt结果汇总1510.xlsx')
+    data = pd.read_csv('answer_after_union.csv')
     labels = ['职业素养','通用能力','职业技能']
     # for label in labels:
     #     data[label] = None
@@ -33,11 +34,11 @@ if __name__ == '__main__':
         for label in labels:
             print(name)
             if str(data.loc[data['name'] == name, label].values[0]) == 'nan':
-                demande = '十条'+ name +'最重要的'+ label+'并描述其内容'
+                demande = '十二条'+ name + '岗位' +'最重要的'+ label+'并描述其内容'
                 ans = interact_gpt(demande)
-                if len(re.findall("：", ans)) < 10:
+                if len(re.findall("：", ans)) < 11:
                     ans = ans + '\n' + interact_gpt('继续')
                 data.loc[data['name'] == name, label] = ans
                 time.sleep(5)
                 print(data.loc[data['name'] == name, label])
-                data.to_csv('answer_after_union.csv')
+                data.to_csv('answer_after_union.csv', index=False)

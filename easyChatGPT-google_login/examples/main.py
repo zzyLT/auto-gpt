@@ -28,8 +28,9 @@ if __name__ == '__main__':
     # for label in labels:
     #     data[label] = None
 
-    for name in list(data['name']):
+    for name in list(data['name'])[:101]:
         for label in labels:
+            print(name)
             if str(data.loc[data['name'] == name, label].values[0]) == 'nan':
                 demande = '十条'+ name +'最重要的'+ label+'并描述其内容'
                 ans = interact_gpt(demande)

@@ -184,7 +184,7 @@ class ChatClient:
         text_area.send_keys(Keys.RETURN)
         self.__wait_to_disappear(By.CLASS_NAME, self.wait_cq)
         box = self.browser.find_elements(By.CLASS_NAME, self.chatbox_cq)[0]
-        answer = self.browser.find_elements(By.TAG_NAME,'ol')[-1]#box.find_elements(By.CLASS_NAME, 'ol')[-1] #self.answer_cq
+        answer = self.browser.find_elements(By.CLASS_NAME, 'markdown')[-1]#(By.TAG_NAME,'ol')[-1]#box.find_elements(By.CLASS_NAME, 'ol')[-1] #self.answer_cq
         self.__log("Got response... ")
         return answer.text
 

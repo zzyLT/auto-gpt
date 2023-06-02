@@ -27,7 +27,7 @@ if __name__ == '__main__':
     """
     三个维度合并到一起提问
     """
-    data = pd.read_csv('./物流职业/majors.csv')
+    data = pd.read_csv('./物流职业/40names.csv')
     data['answer'] = np.NAN
 
     # data = pd.read_csv('answer_182posts.csv')
@@ -37,8 +37,8 @@ if __name__ == '__main__':
             print('>> ', name)
             if str(data.loc[data['name'] == name, 'answer'].values[0]) == 'nan':
                 # demande = '十二条'+ name + '岗位' +'最重要的'+ label+'并描述其内容'
-                demande = '接下来你将充当物流行业的职业分析师，对相关院校专业进行分析，配合我完成一系列文本分析任务，要求：' \
-                         f'针对{name}专业，从专业素养、通用能力、专业技能三个维度进行分析，每个维度提取并分条列出不少于十条重要能力，每条能力说明需要提供不少于10个技能关键词，并不需要描述性语句。' \
+                demande = '接下来你将充当物流行业的职业分析师，配合我完成一系列文本分析任务，要求：' \
+                         f'针对{name}岗位，从专业素养、通用能力、专业技能三个维度进行分析，每个维度提取并分条列出不少于十条重要能力，每条能力说明需要提供不少于10个技能关键词，并不需要描述性语句。' \
                           f'每个重要能力的名称需严格遵守格式要求即“XXX能力”，' \
                           f'并且能力名称不超过10个中文字符。' \
                           f'同时，每条能力的技能关键词要求用中文顿号隔开，并且每两个顿号之间为完整的技能关键词，并且每个技能关键词长度严格限定在4-6个中文字符之间。'
@@ -47,7 +47,7 @@ if __name__ == '__main__':
                 data.loc[data['name'] == name, 'answer'] = ans
                 time.sleep(5)
                 print(data.loc[data['name'] == name, 'answer'])
-                data.to_csv('answer_majors_kwd.csv', index=False)
+                data.to_csv('answer_re_40names.csv', index=False)
     exit()
 
 

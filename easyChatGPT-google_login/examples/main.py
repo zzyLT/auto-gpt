@@ -27,7 +27,7 @@ if __name__ == '__main__':
     """
     三个维度合并到一起提问
     """
-    data = pd.read_csv('./物流职业/40names.csv')
+    data = pd.read_csv('./rework_names.csv')
     data['answer'] = np.NAN
 
     # data = pd.read_csv('answer_182posts.csv')
@@ -74,4 +74,4 @@ if __name__ == '__main__':
                 data.loc[data['name'] == name, label] = ans
                 time.sleep(5)
                 print(data.loc[data['name'] == name, label])
-                data.to_csv('answer_after_union.csv', index=False)
+                data.to_csv('answer_rework.csv', index=False)

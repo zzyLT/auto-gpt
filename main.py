@@ -11,8 +11,8 @@ import multiprocessing
 import re
 
 
-OPENAI_EMAIL = "aaaamiaoaaa@gmail.com"#"zuzhuangyan@gmail.com"#TODO !!!!!!!!!!!!!!!!!!!!
-OPENAI_PASSWORD = "password" #TODO !!!!!!!!!!!!!!!!!!!!
+OPENAI_EMAIL = "zuzhuangyan@gmail.com"#"aaaamiaoaaa@gmail.com"#TODO !!!!!!!!!!!!!!!!!!!!
+OPENAI_PASSWORD = "daisyZZY0609" #TODO !!!!!!!!!!!!!!!!!!!!
 chat = ChatClient(OPENAI_EMAIL, OPENAI_PASSWORD, headless=False, chrome_version=114)
 
 
@@ -27,16 +27,16 @@ if __name__ == '__main__':
     """
     三个维度合并到一起提问
     """
-    data = pd.read_excel('../713 职业名称.xlsx')
-    data['answer'] = np.NAN
+    # data = pd.read_excel('713 职业名称.xlsx')
+    # data['answer'] = np.NAN
 
-    # data = pd.read_csv('../result/answer_detail.csv')
+    min = 0
+    max = 178
+
+    data = pd.read_csv(f'./result/answer_{min}_{max}.csv')
 
     time.sleep(30)
     list_name = list(data['职业名称'])
-
-    min = 0
-    max = len(list_name)
 
     for i in range(len(list_name)):
         if i >= min and i < max :
@@ -55,4 +55,4 @@ if __name__ == '__main__':
                 data.loc[data['职业名称'] == name, 'answer'] = ans
                 time.sleep(5)
                 print(data.loc[data['职业名称'] == name, 'answer'])
-                data.to_csv(f'../result/answer_{min}_{max}.csv', index=False)
+                data.to_csv(f'./result/answer_{min}_{max}.csv', index=False)

@@ -11,7 +11,7 @@ import multiprocessing
 import re
 
 
-OPENAI_EMAIL = "zuzhuangyan@gmail.com"#"aaaamiaoaaa@gmail.com"#TODO !!!!!!!!!!!!!!!!!!!!
+OPENAI_EMAIL = "aaaamiaoaaa@gmail.com"#"zuzhuangyan@gmail.com"#TODO !!!!!!!!!!!!!!!!!!!!
 OPENAI_PASSWORD = "daisyZZY0609" #TODO !!!!!!!!!!!!!!!!!!!!
 chat = ChatClient(OPENAI_EMAIL, OPENAI_PASSWORD, headless=False, chrome_version=114)
 
@@ -30,8 +30,8 @@ if __name__ == '__main__':
     # data = pd.read_excel('713 职业名称.xlsx')
     # data['answer'] = np.NAN
 
-    min = 0
-    max = 178
+    min = 178
+    max = 356
 
     data = pd.read_csv(f'./result/answer_{min}_{max}.csv')
 

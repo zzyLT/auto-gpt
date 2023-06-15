@@ -28,7 +28,7 @@ if __name__ == '__main__':
     三个维度合并到一起提问
     """
     # data = pd.read_excel('713 职业名称.xlsx')
-    data = pd.read_csv('extra.csv')
+    data = pd.read_csv('encore.csv')
     data['answer'] = np.NAN
 
     min = 0
@@ -56,4 +56,4 @@ if __name__ == '__main__':
                 data.loc[data['职业名称'] == name, 'answer'] = ans
                 time.sleep(5)
                 print(data.loc[data['职业名称'] == name, 'answer'])
-                data.to_csv(f'./result/answer_{min}_{max}.csv', index=False)
+                data.to_csv(f'./result/answer_{min}_{max}encore.csv', index=False)

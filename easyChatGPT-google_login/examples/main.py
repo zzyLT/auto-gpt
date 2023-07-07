@@ -1,5 +1,3 @@
-import numpy as np
-
 from chatGPT import ChatClient
 import time
 import pandas as pd
@@ -24,6 +22,7 @@ def interact_gpt(text):
 
 if __name__ == '__main__':
 
+<<<<<<< HEAD
     """
     三个维度合并到一起提问
     """
@@ -54,6 +53,8 @@ if __name__ == '__main__':
     """
     三个维度逐个提问
     """
+=======
+>>>>>>> parent of 3c92b75 (to get keywords in three dimension per times)
     # data = pd.read_csv('./物流职业/extra_post.csv')
     # data = pd.read_csv('answer100.csv')
     # data = pd.read_excel('gpt结果汇总1510.xlsx')
@@ -62,12 +63,11 @@ if __name__ == '__main__':
     # for label in labels:
     #     data[label] = None
 
-    time.sleep(30)
     for name in list(data['name']):
         for label in labels:
             print(name)
             if str(data.loc[data['name'] == name, label].values[0]) == 'nan':
-                # demande = '十二条'+ name + '岗位' +'最重要的'+ label+'并描述其内容'
+                demande = '十二条'+ name + '岗位' +'最重要的'+ label+'并描述其内容'
                 ans = interact_gpt(demande)
                 if len(re.findall("：", ans)) < 11:
                     ans = ans + '\n' + interact_gpt('继续')

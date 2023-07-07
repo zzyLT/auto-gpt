@@ -184,9 +184,10 @@ class ChatClient:
         text_area.send_keys(Keys.RETURN)
         self.__wait_to_disappear(By.CLASS_NAME, self.wait_cq)
         box = self.browser.find_elements(By.CLASS_NAME, self.chatbox_cq)[0]
-        while len(self.browser.find_elements(By.XPATH, '//*[@id="__next"]/div[2]/div[2]/div/main/div[3]/form/div/div[1]/div/button[2]')) == 1:
+        while len(self.browser.find_elements(By.XPATH,
+                                             '//*[@id="__next"]/div[2]/div[2]/div/main/div[3]/form/div/div[1]/div/button[2]')) == 1:
             self.browser.find_element(By.XPATH,
-                                       '//*[@id="__next"]/div[2]/div[2]/div/main/div[3]/form/div/div[1]/div/button[2]').click()
+                                      '//*[@id="__next"]/div[2]/div[2]/div/main/div[3]/form/div/div[1]/div/button[2]').click()
             self.__wait_to_disappear(By.CLASS_NAME, self.wait_cq)
         answer = self.browser.find_elements(By.CLASS_NAME, 'markdown')[-1]#(By.TAG_NAME,'ol')[-1]#box.find_elements(By.CLASS_NAME, 'ol')[-1] #self.answer_cq
         self.__log("Got response... ")
